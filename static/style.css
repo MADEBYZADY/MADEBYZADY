@@ -1,0 +1,349 @@
+@font-face {
+    font-family: "Pixelated MS Sans Serif";
+    src: url("ms_sans_serif.woff") format("woff");
+    src: url("ms_sans_serif.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Pixelated MS Sans Serif";
+    src: url("ms_sans_serif_bold.woff") format("woff");
+    src: url("ms_sans_serif_bold.woff2") format("woff2");
+    font-weight: bold;
+    font-style: normal;
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    /*background-color: #008080;*/
+    background-image: url('img/background.png');
+    background-size: cover;
+    overflow: hidden;
+    font-family: "Pixelated MS Sans Serif", sans-serif;
+    user-select: none;
+    position: fixed;
+}
+
+/*img {
+    image-rendering: pixelated;
+}*/
+
+.desktop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 30px; /* inaltime taskbar */
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 2px;
+    overflow: hidden;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 128px;
+    height: 128px;
+    cursor: default;
+    padding: 2px;
+    margin: 2px;
+    text-align: center;
+    color: white;
+}
+
+.icon img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 4px;
+}
+
+.icon.selected img,
+.explorer-fileicon.selected img {
+    filter: brightness(0.4) contrast(0.8) sepia(100%) hue-rotate(185deg) saturate(4);
+    opacity: 0.7;
+}
+
+.icon.selected span,
+.explorer-fileicon.selected span {
+    background-color: #000080;
+    outline: 1px dotted #ffff7f;
+    outline-offset: -1px;
+}
+
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background-color: #c0c0c0;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ffffff;
+    padding: 0 2px;
+    z-index: 1000;
+}
+
+button.active {
+    box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+}
+
+.start-button {
+    height: 22px;
+    margin: 2px 2px 2px 0;
+    padding: 0 2px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 11px;
+    min-width: 54px;
+}
+
+.start-button img {
+    height: 14px;
+    width: 14px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.taskbar-separator {
+    width: 1px;
+    height: 22px;
+    background: #808080;
+    border-right: 1px solid #ffffff;
+    margin: 0 2px;
+}
+
+.taskbar-items {
+    flex: 1;
+    display: flex;
+    gap: 2px;
+    padding: 0 2px;
+    align-items: center;
+    height: 22px;
+}
+
+.taskbar-item {
+    height: 22px;
+    padding: 0 4px;
+    font-size: 11px;
+    flex: 1;
+    max-width: 156px;
+    min-width: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.taskbar-item.active {
+    font-weight: bold;
+}
+
+.clock {
+    padding: 0 6px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    border: 1px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    margin: 2px 0 2px 2px;
+    font-size: 11px;
+}
+
+.window {
+    position: absolute;
+    background: #c0c0c0;
+    border: 1px solid #000;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    min-height: 100px;
+}
+
+.window-body {
+    margin: 0px !important;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+}
+
+.title-bar {
+    font-size: 11px;
+    padding: 3px;
+    padding-bottom: 2px;
+    font-weight: 100;
+    line-height: 1.3;
+    box-sizing: border-box;
+    position: relative;
+    background: #000080;
+}
+
+.title-bar-text {
+    padding-left: 19px;
+}
+
+.title-bar-icon {
+    background-size: contain;
+    display: inline-block;
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    height: 16px;
+    width: 16px;
+}
+
+.explorer-addressbar {
+    display: flex;
+    align-items: center;
+    background: #bfbfbf;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #7f7f7f;
+    padding: 2px 4px;
+    font-size: 12px;
+    height: 22px;
+}
+.explorer-addressbar label {
+    font-weight: bold;
+    margin-right: 4px;
+}
+.explorer-addressbar input {
+    font-size: 12px;
+    border: 1px solid #bdbdbd;
+    background: #fff;
+    padding: 2px 4px;
+    flex: 1;
+    min-width: 0;
+    margin-right: 4px;
+}
+
+.explorer-fileview {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 16px 8px 8px 8px;
+    background: #c0c0c0;
+    min-height: 180px;
+}
+.explorer-fileicon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 64px;
+    cursor: pointer;
+}
+.explorer-fileicon img {
+    width: 32px;
+    height: 32px;
+}
+.explorer-fileicon .label {
+    font-size: 11px;
+    color: #222;
+    margin-top: 2px;
+    text-align: center;
+    background: transparent;
+}
+
+.explorer-statusbar {
+    display: flex;
+    align-items: stretch;
+    height: 22px;
+    background: #efefef;
+    border-top: 1px solid #bdbdbd;
+    font-size: 11px;
+    padding: 0;
+}
+.explorer-statusbar-cell {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    border-right: 1px solid #bdbdbd;
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+    background: #f4f4f4;
+    min-width: 80px;
+    height: 100%;
+}
+.explorer-statusbar-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    border-left: 1px solid #bdbdbd;
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+    background: #f4f4f4;
+    min-width: 120px;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.explorer-title {
+    font-weight: bold;
+    font-size: 18px;
+    color: #222;
+    margin-bottom: 0;
+}
+
+.explorer-underline {
+    height: 2px;
+    width: 180px;
+    background: #0000c0;
+    margin: 4px 0 8px 0;
+}
+
+.explorer-desc {
+    font-size: 13px;
+    color: #222;
+}
+
+.explorer-main {
+    display: flex;
+    flex-direction: row;
+    background: #c0c0c0;
+    flex: 1 1 0;
+    min-height: 0;
+    min-width: 0;
+}
+.explorer-pane {
+    width: 160px;
+    min-width: 120px;
+    background: #fff;
+    background-image: url("img/explorer/side_pane.jpg");
+    background-repeat: no-repeat;
+    padding: 16px 8px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100%;
+}
+.explorer-filescroll {
+    flex: 1;
+    min-width: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #fff;
+    padding: 16px 8px 8px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 32px;
+    height: 100%;
+}   
