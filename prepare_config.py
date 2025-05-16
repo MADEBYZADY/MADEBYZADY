@@ -63,7 +63,7 @@ for folder_name in os.listdir("virtual_desktop"):
                     img_path = os.path.join(folder_path, filename)
                     img = Image.open(img_path)
                     img = img.resize((32, 32), Image.Resampling.BICUBIC)
-                    img.save(icon_path, format='ICO')
+                    img.save(icon_path, format='png')
                     files.append(filename)
                     print(f"{filename}")
                 except:
