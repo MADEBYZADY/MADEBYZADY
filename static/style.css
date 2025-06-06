@@ -347,3 +347,8 @@ button.active {
     gap: 32px;
     height: 100%;
 }   
+
+.window-header {
+  touch-action: none; /* disables swipe-to-scroll during drag */
+  cursor: grab;
+}
