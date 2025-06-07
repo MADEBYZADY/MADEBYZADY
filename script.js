@@ -291,72 +291,51 @@ class WindowManager {
         return windowId;
     }
     
-    function makeDraggable(windowEl, titleBar) {
-    let isDragging = false;
-    let initialX = 0, initialY = 0;
-    let xOffset = 0, yOffset = 0;
+makeDraggable(window, titleBar) {
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
 
-    titleBar.addEventListener('mousedown', dragStartMouse);
-    titleBar.addEventListener('touchstart', dragStartTouch, { passive: false });
+        titleBar.addEventListener('mousedown', dragStart);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', dragEnd);
 
-    document.addEventListener('mousemove', dragMouse);
-    document.addEventListener('mouseup', dragEnd);
-
-    document.addEventListener('touchmove', dragTouch, { passive: false });
-    document.addEventListener('touchend', dragEnd);
-
-    // Mouse
-    function dragStartMouse(e) {
-        if (e.button !== 0) return; // only left-click
-        if (e.target === titleBar || titleBar.contains(e.target)) {
-            isDragging = true;
+        function dragStart(e) {
             initialX = e.clientX - xOffset;
             initialY = e.clientY - yOffset;
-            titleBar.style.userSelect = 'none';
+
+            if (e.target === titleBar || titleBar.contains(e.target)) {
+                isDragging = true;
+            }
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault(); // ca sa nu tragem de text
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                setTranslate(currentX, currentY, window);
+            }
+        }
+
+        function dragEnd() {
+            initialX = currentX;
+            initialY = currentY;
+            isDragging = false;
+        }
+
+        function setTranslate(xPos, yPos, el) {
+            el.style.transform = translate3d(${xPos}px, ${yPos}px, 0);
         }
     }
-
-    function dragMouse(e) {
-        if (!isDragging) return;
-        e.preventDefault();
-        const currentX = e.clientX - initialX;
-        const currentY = e.clientY - initialY;
-        xOffset = currentX;
-        yOffset = currentY;
-        setTranslate(currentX, currentY);
-    }
-
-    // Phone Touchscreen
-    function dragStartTouch(e) {
-        if (e.target === titleBar || titleBar.contains(e.target)) {
-            isDragging = true;
-            const touch = e.touches[0];
-            initialX = touch.clientX - xOffset;
-            initialY = touch.clientY - yOffset;
-            titleBar.style.userSelect = 'none';
-        }
-    }
-
-    function dragTouch(e) {
-        if (!isDragging) return;
-        e.preventDefault();
-        const touch = e.touches[0];
-        const currentX = touch.clientX - initialX;
-        const currentY = touch.clientY - initialY;
-        xOffset = currentX;
-        yOffset = currentY;
-        setTranslate(currentX, currentY);
-    }
-
-    function dragEnd() {
-        isDragging = false;
-        titleBar.style.userSelect = '';
-    }
-
-    function setTranslate(x, y) {
-        windowEl.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-    }
-}
 
     activateWindow(windowId) {
         this.windows.forEach(win => {
