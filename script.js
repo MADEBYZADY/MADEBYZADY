@@ -366,15 +366,6 @@ class WindowManager {
     }
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  const splash = document.querySelector(".splash-screen");
-  splash.classList.add("animate");
-
-  setTimeout(() => {
-    splash.style.display = "none";
-  }, 1000); // 1 second
-});
-
 // Initialize window manager
 const windowManager = new WindowManager();
 
