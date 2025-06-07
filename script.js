@@ -388,6 +388,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeDesktopFolders();
 });
 
+window.addEventListener("DOMContentLoaded", () => {
+  const splash = document.querySelector(".splash-screen");
+  splash.classList.add("animate");
+
+  setTimeout(() => {
+    splash.style.display = "none";
+  }, 1000); // 1 second
+});
+
 document.getElementById('refresh').addEventListener('click', () => {
     const windowId = windowManager.createWindow(
         "REFRESH",
