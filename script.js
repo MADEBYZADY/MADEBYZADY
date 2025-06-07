@@ -17,17 +17,11 @@ const DESKTOP_FOLDERS =[{'name': 'ABOUT ZADY'}, {'name': 'ACCOUNTS', 'descriptio
 
 class Folder {
     constructor(config) {
-        this.name = config.name.startsWith('*') ? config.name.substring(1) : config.name;
-        this.icon = this.getIcon(config.name);
-        this.description = config.description || '';
-        this.files = config.files || [];
-        this.element = null;
-        this.isSelected = false;
-        this.create();
-    }
+@@ -26,384 +26,384 @@
 
     getIcon(name) {
         const useDefault = name.startsWith('*');
+        if (!useDefault) return `virtual_desktop/_icons/${name}.ico`;
         if (!useDefault) return `virtual_desktop/_icons/${name}.png`;
 
         const cleanName = useDefault ? name.substring(1) : name;
@@ -153,10 +147,10 @@ My work is fueled by a love for all things artistic and the creative process its
                         const aspectRatio = img.width / img.height;
                         const maxWidth = window.innerWidth * 0.8;
                         const maxHeight = window.innerHeight * 0.8;
-                        
+
                         let width = maxWidth;
                         let height = width / aspectRatio;
-                        
+
                         if (height > maxHeight) {
                             height = maxHeight;
                             width = height * aspectRatio;
@@ -222,14 +216,14 @@ class WindowManager {
         const window = document.createElement('div');
         window.className = 'window';
         window.dataset.windowId = windowId;
-        
+
         // cascada
         const offset = this.windows.length * 20;
         window.style.width = `${width}px`;
         window.style.height = `${height}px`;
         window.style.left = `${50 + offset}px`;
         window.style.top = `${50 + offset}px`;
-        
+
         const titleBar = document.createElement('div');
         titleBar.className = 'title-bar';
         titleBar.innerHTML = `
@@ -290,8 +284,8 @@ class WindowManager {
         this.activateWindow(windowId);
         return windowId;
     }
-    
-makeDraggable(window, titleBar) {
+
+    makeDraggable(window, titleBar) {
         let isDragging = false;
         let currentX;
         let currentY;
@@ -333,7 +327,7 @@ makeDraggable(window, titleBar) {
         }
 
         function setTranslate(xPos, yPos, el) {
-            el.style.transform = translate3d(${xPos}px, ${yPos}px, 0);
+            el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
         }
     }
 
@@ -372,6 +366,15 @@ makeDraggable(window, titleBar) {
     }
 }
 
+window.addEventListener("DOMContentLoaded", () => {
+  const splash = document.querySelector(".splash-screen");
+  splash.classList.add("animate");
+
+  setTimeout(() => {
+    splash.style.display = "none";
+  }, 1000); // 1 second
+});
+
 // Initialize window manager
 const windowManager = new WindowManager();
 
@@ -386,15 +389,6 @@ document.addEventListener('mousedown', (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     initializeDesktopFolders();
-});
-
-window.addEventListener("DOMContentLoaded", () => {
-  const splash = document.querySelector(".splash-screen");
-  splash.classList.add("animate");
-
-  setTimeout(() => {
-    splash.style.display = "none";
-  }, 1000); // 1 second
 });
 
 document.getElementById('refresh').addEventListener('click', () => {
@@ -418,4 +412,3 @@ document.getElementById('refresh').addEventListener('click', () => {
     cancel.addEventListener('click', () => {
         windowManager.closeWindow(windowId);
     });
-}); 
