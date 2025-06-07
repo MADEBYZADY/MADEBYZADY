@@ -3,10 +3,10 @@ from PIL import Image
 
 # Hardcoded descriptions
 FOLDER_DESCRIPTIONS = {
-    "ACCOUNTS": "All my links.",
-    "PERSONAL WORK": "Personal creative and development projects.", 
-    "LOGOS": "Logo designs and brand assets.",
-    "COLLABS": "Client work and collaborative projects.",
+    "ACCOUNTS": "ALL MY LINKS.",
+    "PERSONAL WORK": "MY OWN PROJECTS.", 
+    "LOGOS": "LOGO DESIGNS.",
+    "COLLABS": "CLIENT WORK AND COLLABORATIVE PROJECTS.",
     "Support ZADY": "Support my work."
 }
 
