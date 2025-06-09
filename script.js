@@ -13,15 +13,21 @@ const LINK_STORE = {
     'Steam ZADY.url': 'https://steamcommunity.com/id/zady03/',
     'Musicboard ZADY.url': 'https://musicboard.app/zady'
 }
-const DESKTOP_FOLDERS =[{'name': 'ABOUT ZADY'}, {'name': 'ACCOUNTS', 'description': 'ALL MY LINKS..', 'files': ['1 - Personal IG.url', '2 - Projects IG.url', '3 - Photography IG.url', '4 - Pinterest ZADY.url', '5 - Discord ZADY.url', '6 - Reddit ZADY.url', '7 - TikTok ZADY.url', '8 - Spotify ZADY.url', '9 - Youtube ZADY.url', '10 - Facebook ZADY.url', '11 - Twitter ZADY.url', '12 - Steam ZADY.url', '13 - Musicboard ZADY.url']}, {'name': 'COLLABS', 'description': 'CLIENT WORK AND COLLABORATIVE PROJECTS.', 'files': ['22 - Polaosam Blackout Cover Art.png', '21 - Polaosam Supersonic Cover Art.png', '20 - TheRealRed FEITH Design.png', '*19 - KAZ! Laydown Lyric Video.mp4', '18 - KAZ! Laydown Cover Art.png', '17 - TheRealRed Halloween 2024 Stream Decoration.png', '16 - Polaosam Quick Attack Cover Art.png', '15 - KAZ! Xuelei Hü Cover Art.jpg', '14 - ivor Karanfili EP Merch Design.png', '13 - ivor Karanfili EP Cover Art.png', '12 - ivor Zbog Tebe Sam Zavolio Zimu Cover Art.png', '11 - Rolling Loud California 2024 - Ye & Ty Dolla $ign.png', '10 - Rolling Loud California 2024 - Future & Metro Boomin.png', '9 - Rolling Loud California 2024 - Post Malone.png', '8 - Rolling Loud California 2024 - Nicki Minaj.png', '*7 - Revista LYCEUM - Liceul Teoretic „Callatis” - Decembrie 2023.pdf', '6 - ProjectXXI Party Flyer.png', '5 - OPIUM Afterparty Flyer.png', '4 - Vincenzo K-Drama Poster by ZADY.PNG', '3 - ivor Kontakti Cover Art.png', '*2 - Polaosam Contra Lyric Video.mp4', '1 - Polaosam Contra Cover Art.png']}, {'name': 'LOGOS', 'description': 'LOGO DESIGNS.', 'files': ['9 - EXS Logo.png', '8 - Cofeina Fix Logo.png', '7 - TWOPERCENTSIX Logo.png', '6 - PUNKLRY Logo.png', '5 - ZADY DOUBLE CROSS Logo.png', '4 - ZADY Logo.png', '3 - ZSM Recruitments Logo.png', '2 - Resell Jester Logo.png', '1 - Sulim Media Logo.png']}, {'name': 'PERSONAL WORK', 'description': 'MY OWN PROJECTS.', 'files': ['21 - Playboi Carti _I AM MUSIC_ Poster 2 by ZADY.png', '20 - STAR 2hollis Poster by ZADY.png', '19 - CHROMAKOPIA Poster by ZADY.png', '18 - MASQUERADE Design by ZADY.png', '17 - SPACEBOUND Poster by ZADY.png', '17.2 - SPACEBOUND T-Shirt Design by ZADY.png', '16 - SELF-REFLECT_PosterbyZADY.png', '15 - Jorōgumo - Spider Geisha (Poster by ZADY).png', '14 - Hard Jewelry LA 2024 PopUp Contest Poster by ZADY.png', '14.2 - Hard Jewelry LA 2024 PopUp Contest T-Shirt Design by ZADY.png', '13 - DIGITALLY PUNKED DEMISE (Poster by ZADY).png', '12 - Playboi Carti I AM MUSIC Singles Cover by ZADY.PNG', '11 - Evangelion Eva01 Poster by ZADY.PNG', '10 - Chess Poster by ZADY.PNG', '9 - Young Thug Poster by ZADY.PNG', '8 - Lil Uzi Vert Spiky Hair Poster by ZADY.PNG', '7 - Cyberpunk Edgerunners David Poster by ZADY.PNG', '6 - Cyberpunk Edgerunners Lucy Poster by ZADY.PNG', '5 - JoJo Golden Wind Poster by ZADY.PNG', '4 - Travis Scott Utopia Poster by ZADY.PNG', '3 - Lil Uzi Vert Pink Tape Fanmade Cover.png', '2 - Playboi Carti Antagonist Tour Poster by ZADY.png', '1 - Evangelion Poster by ZADY.png']}, {'name': 'Support ZADY'}]
+const DESKTOP_FOLDERS =[{'name': 'ABOUT ZADY'}, {'name': 'ACCOUNTS', 'description': 'All my links.', 'files': ['1 - Personal IG.url', '2 - Projects IG.url', '3 - Photography IG.url', '4 - Pinterest ZADY.url', '5 - Discord ZADY.url', '6 - Reddit ZADY.url', '7 - TikTok ZADY.url', '8 - Spotify ZADY.url', '9 - Youtube ZADY.url', '10 - Facebook ZADY.url', '11 - Twitter ZADY.url', '12 - Steam ZADY.url', '13 - Musicboard ZADY.url']}, {'name': 'COLLABS', 'description': 'Client work and collaborative projects.', 'files': ['21 - Polaosam Supersonic Cover Art.png', '20 - TheRealRed FEITH Design.png', '*19 - KAZ! Laydown Lyric Video.mp4', '18 - KAZ! Laydown Cover Art.png', '17 - TheRealRed Halloween 2024 Stream Decoration.png', '16 - Polaosam Quick Attack Cover Art.png', '15 - KAZ! Xuelei Hü Cover Art.jpg', '14 - ivor Karanfili EP Merch Design.png', '13 - ivor Karanfili EP Cover Art.png', '12 - ivor Zbog Tebe Sam Zavolio Zimu Cover Art.png', '11 - Rolling Loud California 2024 - Ye & Ty Dolla $ign.png', '10 - Rolling Loud California 2024 - Future & Metro Boomin.png', '9 - Rolling Loud California 2024 - Post Malone.png', '8 - Rolling Loud California 2024 - Nicki Minaj.png', '*7 - Revista LYCEUM - Liceul Teoretic „Callatis” - Decembrie 2023.pdf', '6 - ProjectXXI Party Flyer.png', '5 - OPIUM Afterparty Flyer.png', '4 - Vincenzo K-Drama Poster by ZADY.PNG', '3 - ivor Kontakti Cover Art.png', '*2 - Polaosam Contra Lyric Video.mp4', '1 - Polaosam Contra Cover Art.png']}, {'name': 'LOGOS', 'description': 'Logo designs and brand assets.', 'files': ['9 - EXS Logo.png', '8 - Cofeina Fix Logo.png', '7 - TWOPERCENTSIX Logo.png', '6 - PUNKLRY Logo.png', '5 - ZADY DOUBLE CROSS Logo.png', '4 - ZADY Logo.png', '3 - ZSM Recruitments Logo.png', '2 - Resell Jester Logo.png', '1 - Sulim Media Logo.png']}, {'name': 'PERSONAL WORK', 'description': 'Personal creative and development projects.', 'files': ['21 - Playboi Carti _I AM MUSIC_ Poster 2 by ZADY.png', '20 - STAR 2hollis Poster by ZADY.png', '19 - CHROMAKOPIA Poster by ZADY.png', '18 - MASQUERADE Design by ZADY.png', '17 - SPACEBOUND Poster by ZADY.png', '17.2 - SPACEBOUND T-Shirt Design by ZADY.png', '16 - SELF-REFLECT_PosterbyZADY.png', '15 - Jorōgumo - Spider Geisha (Poster by ZADY).png', '14 - Hard Jewelry LA 2024 PopUp Contest Poster by ZADY.png', '14.2 - Hard Jewelry LA 2024 PopUp Contest T-Shirt Design by ZADY.png', '13 - DIGITALLY PUNKED DEMISE (Poster by ZADY).png', '12 - Playboi Carti I AM MUSIC Singles Cover by ZADY.PNG', '11 - Evangelion Eva01 Poster by ZADY.PNG', '10 - Chess Poster by ZADY.PNG', '9 - Young Thug Poster by ZADY.PNG', '8 - Lil Uzi Vert Spiky Hair Poster by ZADY.PNG', '7 - Cyberpunk Edgerunners David Poster by ZADY.PNG', '6 - Cyberpunk Edgerunners Lucy Poster by ZADY.PNG', '5 - JoJo Golden Wind Poster by ZADY.PNG', '4 - Travis Scott Utopia Poster by ZADY.PNG', '3 - Lil Uzi Vert Pink Tape Fanmade Cover.png', '2 - Playboi Carti Antagonist Tour Poster by ZADY.png', '1 - Evangelion Poster by ZADY.png']}, {'name': 'Support ZADY'}]
 
 class Folder {
     constructor(config) {
-@@ -26,384 +26,384 @@
+        this.name = config.name.startsWith('*') ? config.name.substring(1) : config.name;
+        this.icon = this.getIcon(config.name);
+        this.description = config.description || '';
+        this.files = config.files || [];
+        this.element = null;
+        this.isSelected = false;
+        this.create();
+    }
 
     getIcon(name) {
         const useDefault = name.startsWith('*');
-        if (!useDefault) return `virtual_desktop/_icons/${name}.ico`;
         if (!useDefault) return `virtual_desktop/_icons/${name}.png`;
 
         const cleanName = useDefault ? name.substring(1) : name;
@@ -147,10 +153,10 @@ My work is fueled by a love for all things artistic and the creative process its
                         const aspectRatio = img.width / img.height;
                         const maxWidth = window.innerWidth * 0.8;
                         const maxHeight = window.innerHeight * 0.8;
-
+                        
                         let width = maxWidth;
                         let height = width / aspectRatio;
-
+                        
                         if (height > maxHeight) {
                             height = maxHeight;
                             width = height * aspectRatio;
@@ -216,14 +222,14 @@ class WindowManager {
         const window = document.createElement('div');
         window.className = 'window';
         window.dataset.windowId = windowId;
-
+        
         // cascada
         const offset = this.windows.length * 20;
         window.style.width = `${width}px`;
         window.style.height = `${height}px`;
         window.style.left = `${50 + offset}px`;
         window.style.top = `${50 + offset}px`;
-
+        
         const titleBar = document.createElement('div');
         titleBar.className = 'title-bar';
         titleBar.innerHTML = `
@@ -403,3 +409,4 @@ document.getElementById('refresh').addEventListener('click', () => {
     cancel.addEventListener('click', () => {
         windowManager.closeWindow(windowId);
     });
+}); 
