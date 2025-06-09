@@ -7,7 +7,7 @@ FOLDER_DESCRIPTIONS = {
     "PERSONAL WORK": "MY OWN PROJECTS.", 
     "LOGOS": "LOGO DESIGNS.",
     "COLLABS": "CLIENT WORK AND COLLABORATIVE PROJECTS.",
-    "Support ZADY": "Support my work."
+    "SUPPORT ZADY": "Support my work."
 }
 
 desktop_folders = [{'name': 'ABOUT ZADY'}]
@@ -81,7 +81,7 @@ for folder_name in os.listdir("virtual_desktop"):
     
     desktop_folders.append(folder_config)
 
-desktop_folders.append({'name':'Support ZADY'})
+desktop_folders.append({'name':'SUPPORT ZADY'})
 print(desktop_folders)
 # Write config
 #with open("static/js/config.js", "w") as f:
