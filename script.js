@@ -390,7 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.getElementById('refresh').addEventListener('click', () => {
     const windowId = windowManager.createWindow(
-        "REFRESH",
+        "REFRESH‎ ",
         `
                 <div class="field-row" style="padding: 16px;">
                     <img src="static/img/warning.png" alt="Warning" style="width: 32px; height: 32px; margin-right: 16px;">
