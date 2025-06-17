@@ -61,6 +61,7 @@ body {
 }
 
 .icon img {
+    image-rendering: pixelated;
     width: 64px;
     height: 64px;
     margin-bottom: 4px;
@@ -206,6 +207,7 @@ button.active {
     left: 4px;
     height: 16px;
     width: 16px;
+    image-rendering: pixelated;
 }
 
 .explorer-addressbar {
