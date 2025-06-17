@@ -10,12 +10,23 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+    <div id="boot-screen"><center>
+        <video id="boot-video" autoplay muted playsinline height="80%"><source src="static/img/BOOT.webm" type="video/webm"></video>
+    </center></div>
+    <script>
+        document.getElementById('boot-video').addEventListener('ended', () => {
+            setTimeout(() => {
+                document.getElementById('boot-screen').style = 'display: none';
+            }, 100)
+        });
+    </script>
+    
     <div class="desktop"></div>
 
     <div class="taskbar">
         <button class="start-button" id="refresh">
             <img src="static/img/start.ico" alt="Start">
-            REFRESH‎ 
+            REFRESH ‎
         </button>
         <div class="taskbar-separator"></div>
         <div class="taskbar-items"></div>
