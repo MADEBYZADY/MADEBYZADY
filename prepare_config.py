@@ -98,13 +98,12 @@ for folder_name in FOLDERS_ORDERED: #os.listdir("virtual_desktop"):
                 else:
                     files.append(filename)
 
-    print(files)
-    #print(sorted(files, key=lambda x: float(x.split(' - ')[0].strip('*')), reverse=True))
     folder_config = {
         "name": folder_name,
         "description": FOLDER_DESCRIPTIONS.get(folder_name, ""),
-        "files": sorted(files, key=lambda x: float(x.split(' - ')[0].strip('*')) - (1 if float(x.split(' - ')[0].strip('*')) % 1 != 0 else 0), reverse=folder_name != 'ACCOUNTS')
+        "files": sorted(files, key=lambda x: float(x.split(' - ')[0].strip('*')) - (1 if float(x.split(' - ')[0].strip('*')) % 1 != 0 and folder_name != 'ACCOUNTS' else 0), reverse=folder_name != 'ACCOUNTS')
     }
+    print(folder_config)
     
     desktop_folders.append(folder_config)
 
