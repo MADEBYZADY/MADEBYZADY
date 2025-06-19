@@ -308,9 +308,8 @@ class WindowManager {
 
         function drag(e) {
             var oe = e;
-            if (e.touches){
+            if (e.touches)
                 e = e.touches[0]
-            }
             if (isDragging) {
                 oe.preventDefault(); // ca sa nu tragem de text
                 currentX = e.clientX - initialX;
