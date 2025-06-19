@@ -164,8 +164,7 @@ button.active {
     height: 22px;
     padding: 0 4px;
     font-size: 11px;
-    flex: 1;
-    max-width: 156px;
+    flex: 0 1 150px; /* nu crește, dar se micșorează la nevoie până la min-width */
     min-width: 50px;
     white-space: nowrap;
     overflow: hidden;
