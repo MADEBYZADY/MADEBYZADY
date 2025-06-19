@@ -291,7 +291,13 @@ class WindowManager {
         document.addEventListener('mousemove', drag);
         document.addEventListener('mouseup', dragEnd);
 
+        titleBar.addEventListener('touchstart', dragStart);
+        document.addEventListener('touchmove', drag);
+        document.addEventListener('touchend', dragEnd);
+
         function dragStart(e) {
+            if (e.touches)
+                e = e.touches[0]
             initialX = e.clientX - xOffset;
             initialY = e.clientY - yOffset;
 
@@ -301,8 +307,12 @@ class WindowManager {
         }
 
         function drag(e) {
+            var oe = e;
+            if (e.touches){
+                e = e.touches[0]
+            }
             if (isDragging) {
-                e.preventDefault(); // ca sa nu tragem de text
+                oe.preventDefault(); // ca sa nu tragem de text
                 currentX = e.clientX - initialX;
                 currentY = e.clientY - initialY;
 
