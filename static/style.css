@@ -201,6 +201,12 @@ button.active {
     min-height: 100px;
 }
 
+.window {
+  max-width: 95vw;  /* 95% din viewport width */
+  max-height: 90vh; /* 90% din viewport height */
+  overflow: auto;   /* scroll dacă conținutul e mai mare */
+}
+
 .window-body {
     margin: 0px !important;
     flex: 1;

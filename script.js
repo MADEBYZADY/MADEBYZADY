@@ -394,6 +394,41 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeDesktopFolders();
 });
 
+function repositionWindowIfOutOfViewport(winEl) {
+  const padding = 10;
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+
+  // Resize defensiv dacă fereastra e mai mare decât viewportul
+  if (winEl.offsetWidth > viewportWidth) {
+    winEl.style.width = `${viewportWidth - padding * 2}px`;
+  }
+
+  if (winEl.offsetHeight > viewportHeight) {
+    winEl.style.height = `${viewportHeight - padding * 2}px`;
+  }
+
+  const rect = winEl.getBoundingClientRect();
+
+  let newLeft = rect.left;
+  let newTop = rect.top;
+
+  if (rect.right > viewportWidth - padding) {
+    newLeft = viewportWidth - rect.width - padding;
+  } else if (rect.left < padding) {
+    newLeft = padding;
+  }
+
+  if (rect.bottom > viewportHeight - padding) {
+    newTop = viewportHeight - rect.height - padding;
+  } else if (rect.top < padding) {
+    newTop = padding;
+  }
+
+  winEl.style.left = `${newLeft}px`;
+  winEl.style.top = `${newTop}px`;
+}
+
 document.getElementById('refresh').addEventListener('click', () => {
     const windowId = windowManager.createWindow(
         "REFRESH‎ ",
