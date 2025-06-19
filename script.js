@@ -267,6 +267,9 @@ class WindowManager {
         window.addEventListener('mousedown', () => {
             this.activateWindow(windowId);
         });
+        window.addEventListener('touchstart', () => {
+            this.activateWindow(windowId);
+        });
 
         this.windows.push({
             id: windowId,
@@ -291,7 +294,13 @@ class WindowManager {
         document.addEventListener('mousemove', drag);
         document.addEventListener('mouseup', dragEnd);
 
+        titleBar.addEventListener('touchstart', dragStart);
+        document.addEventListener('touchmove', drag);
+        document.addEventListener('touchend', dragEnd);
+
         function dragStart(e) {
+            if (e.touches)
+                e = e.touches[0]
             initialX = e.clientX - xOffset;
             initialY = e.clientY - yOffset;
 
@@ -301,8 +310,11 @@ class WindowManager {
         }
 
         function drag(e) {
+            var oe = e;
+            if (e.touches)
+                e = e.touches[0]
             if (isDragging) {
-                e.preventDefault(); // ca sa nu tragem de text
+                oe.preventDefault(); // ca sa nu tragem de text
                 currentX = e.clientX - initialX;
                 currentY = e.clientY - initialY;
 
@@ -363,6 +375,7 @@ class WindowManager {
 const windowManager = new WindowManager();
 
 // deselecteaza cand click altundeva
+// touch bleh
 document.addEventListener('mousedown', (e) => {
     if (!e.target.closest('.icon') && !e.target.closest('.explorer-fileicon')) {
         document.querySelectorAll('.icon').forEach(icon => icon.classList.remove('selected'));
