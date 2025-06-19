@@ -267,6 +267,9 @@ class WindowManager {
         window.addEventListener('mousedown', () => {
             this.activateWindow(windowId);
         });
+        window.addEventListener('touchstart', () => {
+            this.activateWindow(windowId);
+        });
 
         this.windows.push({
             id: windowId,
@@ -372,6 +375,7 @@ class WindowManager {
 const windowManager = new WindowManager();
 
 // deselecteaza cand click altundeva
+// touch bleh
 document.addEventListener('mousedown', (e) => {
     if (!e.target.closest('.icon') && !e.target.closest('.explorer-fileicon')) {
         document.querySelectorAll('.icon').forEach(icon => icon.classList.remove('selected'));
