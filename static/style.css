@@ -164,14 +164,17 @@ button.active {
     height: 22px;
     padding: 0 4px;
     font-size: 11px;
-    flex: 0 1 150px; /* nu crește, dar se micșorează la nevoie până la min-width */
+    flex: 0 1 156px;
     min-width: 50px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;
-    display: flex;
-    align-items: center;
+    display: block;
+}
+
+.taskbar-item > * {
+    line-height: 22px;
 }
 
 .taskbar-item.active {
@@ -369,8 +372,9 @@ button.active {
     height: 100%;
 }
 .explorer-filescroll {
-    flex: 1;
+    flex: 1 1 auto;
     min-width: 0;
+    min-height: 0;
     overflow-y: auto;
     overflow-x: hidden;
     background: #fff;
@@ -379,5 +383,4 @@ button.active {
     flex-wrap: wrap;
     align-items: flex-start;
     gap: 32px;
-    height: 100%;
-}   
+}
