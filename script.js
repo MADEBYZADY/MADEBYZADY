@@ -445,8 +445,6 @@ document.getElementById('refresh').addEventListener('click', () => {
         300, 130,
         "static/img/warning.png"
     );
-    
-document.getElementById('refresh').classList.add('taskbar-button-fixed');
 
     const cancel = document.querySelector(`.window[data-window-id="${windowId}"]`).getElementsByClassName('close-refresh')[0];
     cancel.addEventListener('click', () => {
