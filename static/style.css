@@ -39,20 +39,6 @@ body {
   }
 }
 
-@media (max-width: 600px) {
-  body {
-    background-size: 150px auto;
-  }
-  @keyframes scrollBackground {
-    0% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 150px 0;
-    }
-  }
-}
-
 /*img {
     image-rendering: pixelated;
 }*/
