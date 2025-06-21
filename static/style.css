@@ -58,16 +58,15 @@ body {
 /* haladit ascunde titlul in taskbar pe telefon */
 
 @media (max-width: 600px) {
-  .taskbar-title {
-    display: none;
-  }
-
   .taskbar-item {
     flex: 0 0 30px;
+    width: 30px;
+    height: 30px;
     max-width: 30px;
     min-width: 30px;
     padding: 0;
     justify-content: center;
+    align-items: center;
   }
 
   .taskbar-item span.title {
@@ -104,7 +103,7 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    animation: hideBoot 7s forwards;
+    animation: hideBoot 2s forwards;
 }
 
 @keyframes hideBoot {
