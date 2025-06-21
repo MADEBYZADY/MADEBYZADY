@@ -58,6 +58,10 @@ body {
 /* haladit ascunde titlul in taskbar pe telefon */
 
 @media (max-width: 600px) {
+    .taskbar-title {
+    display: none;
+  }
+
   .taskbar-item {
     flex: 0 0 30px;
     width: 30px;
@@ -211,7 +215,7 @@ button.active {
 }
 
 .taskbar-items {
-    flex: 1;
+    flex: 1 1 auto;
     display: flex;
     gap: 2px;
     padding: 0 2px;
@@ -225,9 +229,9 @@ button.active {
     font-size: 11px;
     flex: 0 1 156px;
     min-width: 50px;
-    max-width: 100px;
+    max-width: 80px;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: ellipsis;
     text-align: left;
     display: flex;
     align-items: center;
@@ -269,6 +273,7 @@ button.active {
     border-color: #808080 #ffffff #ffffff #808080;
     margin: 2px 0 2px 2px;
     font-size: 11px;
+    flex: 0 0 auto
 }
 
 .window {
