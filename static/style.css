@@ -155,7 +155,6 @@ body {
 }
 
 .icon img {
-    image-rendering: pixelated;
     width: 64px;
     height: 64px;
     margin-bottom: 4px;
@@ -193,14 +192,18 @@ button.active {
 }
 
 .start-button {
+    flex: 0 0 auto;
     height: 22px;
     margin: 2px 2px 2px 0;
-    padding: 0 2px;
+    padding: 0 0px;
     display: flex;
+    justify-content: center;
     align-items: center;
     font-weight: bold;
     font-size: 11px;
-    min-width: 54px;
+    min-width: 78px;
+    max-width: 78px;
+    white-space: nowrap;
 }
 
 .start-button img {
@@ -219,42 +222,43 @@ button.active {
 }
 
 .taskbar-items {
-    flex: 1 1 auto;
-    display: flex;
-    gap: 2px;
-    padding: 0 2px;
-    align-items: center;
-    height: 22px;
+  display: inline-block;
+  flex-direction: row;
+  align-items: center;
+  flex: 1 1 auto;
+  gap: 2px;
+  padding: 0 2px;
+  height: 22px;
+  min-width: 0;      
+  overflow: hidden;
 }
 
 .taskbar-item {
-    height: 22px;
-    padding: 0 4px;
-    font-size: 11px;
-    flex: 0 1 156px;
-    min-width: 50px;
-    max-width: 80px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+  display: inline-block;
+  align-items: center;
+  height: 22px;
+  font-size: 11px;
+  width: 140px;
+  padding: 0 8px;
+  gap: 4px;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.taskbar-title {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%; 
 }
 
 .taskbar-item img.icon {
     flex: 0 0 20px;
     height: 16px;
     object-fit: contain;
-}
-
-.taskbar-item span.title {
-    flex: 1 1 auto;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    padding-right: 20px;
-    box-sizing: border-box;
 }
 
 .taskbar-item > * {
@@ -265,25 +269,20 @@ button.active {
     font-weight: bold;
 }
 
-.taskbar-button-fixed {
-    flex: 0 0 60px;
-    min-width: 60px;
-    max-width: 60px;
-    white-space: nowrap;
-}
-
 .clock {
-    flex: 0 0 70px;
-    min-width: 70px;
-    max-width: 70px;
-    padding: 0 6px;
+    position: fixed;
+    bottom: 4px;
+    right: 4px;
+    width: 60px;
     height: 22px;
     display: flex;
+    justify-content: center;
     align-items: center;
     border: 1px solid;
     border-color: #808080 #ffffff #ffffff #808080;
-    margin: 2px 0 2px 2px;
     font-size: 11px;
+    white-space: nowrap;
+    z-index: 1000;
 }
 
 .window {
