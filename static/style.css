@@ -390,3 +390,6 @@ button.active {
     align-items: flex-start;
     gap: 32px;
 }
+
+::-webkit-scrollbar-button {
+  display: none;
