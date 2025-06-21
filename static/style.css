@@ -23,7 +23,8 @@ body {
   background-image: url('img/background.png');
   background-repeat: repeat;
   background-size: 600px auto;
-  animation: scrollBackground 30s linear infinite;
+  animation: scrollBackground 60s linear infinite;
+  font-family: "Pixelated MS Sans Serif", sans-serif;
   user-select: none;
   position: fixed;
   overflow: hidden;
@@ -34,7 +35,7 @@ body {
     background-position: 0 0;
   }
   100% {
-    background-position: 200px 200px; /* Scroll diagonally */
+    background-position: 600px auto;
   }
 }
 
