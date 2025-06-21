@@ -231,7 +231,7 @@ button.active {
     min-width: 50px;
     max-width: 80px;
     white-space: nowrap;
-    overflow: ellipsis;
+    overflow: hidden;
     text-align: left;
     display: flex;
     align-items: center;
@@ -248,7 +248,7 @@ button.active {
     flex: 1 1 auto;
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .taskbar-item > * {
