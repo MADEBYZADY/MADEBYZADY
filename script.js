@@ -244,28 +244,9 @@ class WindowManager {
 
         const taskbarItem = document.createElement('button');
         taskbarItem.className = 'taskbar-item';
-        taskbarItem.innerHTML = `${icon ? `<img src="${icon}" class="taskbar-icon" alt="" />` : ''}<span>${title}</span>`;
+        taskbarItem.innerHTML = `${icon ? `<img src="${icon}" alt="" width="16" height="16" style="object-fit: contain; flex-shrink: 0; margin-right: 4px;" />` : ''}<span>${title}</span>`;
         taskbarItem.dataset.windowId = windowId;
         this.taskbarItems.appendChild(taskbarItem);
-
-        .taskbar-item {
-             display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 8px;
-            height: 100%; /* asigură-te că se potrivește în taskbar */
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .taskbar-icon {
-             max-height: 70%;   /* se scalează față de înălțimea taskbar-ului */
-            height: auto;
-            width: auto;
-            aspect-ratio: 1 / 1;
-            object-fit: contain;
-            flex-shrink: 0;
-        }
 
         this.makeDraggable(window, titleBar);
 
