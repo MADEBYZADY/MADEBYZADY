@@ -59,7 +59,7 @@ body {
 
 @media (max-width: 600px) {
     .taskbar-title {
-    display: none;
+    display: inline-block;
   }
 
   .taskbar-item {
