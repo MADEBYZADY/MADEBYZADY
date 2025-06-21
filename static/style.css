@@ -66,8 +66,6 @@ body {
     flex: 0 0 30px;
     width: 30px;
     height: 30px;
-    max-width: 30px;
-    min-width: 30px;
     padding: 0;
     justify-content: center;
     align-items: center;
@@ -249,6 +247,8 @@ button.active {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    padding-right: 20px;
+    box-sizing: border-box;
 }
 
 .taskbar-item > * {
@@ -475,3 +475,4 @@ button.active {
 
 ::-webkit-scrollbar-button {
   display: none;
+}
