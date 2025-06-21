@@ -248,6 +248,25 @@ class WindowManager {
         taskbarItem.dataset.windowId = windowId;
         this.taskbarItems.appendChild(taskbarItem);
 
+        .taskbar-item {
+             display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 8px;
+            height: 100%; /* asigură-te că se potrivește în taskbar */
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .taskbar-icon {
+             max-height: 70%;   /* se scalează față de înălțimea taskbar-ului */
+            height: auto;
+            width: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
         this.makeDraggable(window, titleBar);
 
         // Add window controls
