@@ -213,7 +213,7 @@ button.active {
     font-size: 11px;
     flex: 0 1 156px;
     min-width: 50px;
-    max-width: 120px;
+    max-width: 100px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

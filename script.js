@@ -245,10 +245,9 @@ class WindowManager {
         const taskbarItem = document.createElement('button');
         taskbarItem.className = 'taskbar-item';
         taskbarItem.innerHTML = `<div style="display: flex; align-items: center;">
-             ${icon ? `<img src="${icon}" alt="" width="16" height="16" style="object-fit: contain; flex-shrink: 0; margin-right: 4px;" />` : ''}
-            <span>${title}</span>
-            </div>
-            `;
+            ${icon ? `<img src="${icon}" alt="" width="16" height="16" style="object-fit: contain; flex-shrink: 0; margin-right: 4px;" />` : ''}
+            <span class="taskbar-title">${title}</span>
+            </div>`;
         taskbarItem.dataset.windowId = windowId;
         this.taskbarItems.appendChild(taskbarItem);
 
