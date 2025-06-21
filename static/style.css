@@ -227,7 +227,7 @@ button.active {
     font-size: 11px;
     flex: 0 1 156px;
     min-width: 50px;
-    max-width: 80px;
+    max-width: 150px;
     white-space: nowrap;
     overflow: hidden;
     text-align: left;
