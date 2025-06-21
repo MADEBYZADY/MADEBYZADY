@@ -39,6 +39,22 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  body {
+    background-size: 150vw auto;
+    animation: scrollBackgroundMobile 60s linear infinite;
+  }
+
+  @keyframes scrollBackgroundMobile {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 150vw 0;
+    }
+  }
+}
+
 /*img {
     image-rendering: pixelated;
 }*/
