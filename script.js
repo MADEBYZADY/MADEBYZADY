@@ -55,7 +55,7 @@ class Folder {
         if (this.name == "ABOUT ZADY")
             return windowManager.createWindow(
                 "ABOUT ZADY",
-                `<pre style="white-space:pre-wrap;padding:8px;height:100%">ⵐ Hey, I'm ZADY — a 2006-born Romanian creative freelancer, active in graphic design, photo/video editing, photography, and whatever else sparks my curiosity along the way. ⵐ
+                `<pre style="white-space:pre-wrap;padding:8px;height:100%;font-size:18px">ⵐ Hey, I'm ZADY — a 2006-born Romanian creative freelancer, active in graphic design, photo/video editing, photography, and whatever else sparks my curiosity along the way. ⵐ
                 
 ⵐ I’ve collaborated with clients worldwide: from major festivals like Rolling Loud to local venues, musicians, event organizers, YouTubers, and brands. ⵐ
 
