@@ -479,6 +479,11 @@ button.active {
     gap: 32px;
 }
 
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges; /* fallback for some browsers */
+}
+
 ::-webkit-scrollbar-button {
   display: none;
 }
