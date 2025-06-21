@@ -64,8 +64,14 @@ body {
 
   .taskbar-item {
     flex: 0 0 30px;
+<<<<<<< HEAD
     width: 30px;
     height: 30px;
+=======
+    width: 30px !important;
+    min-width: 30px !important;
+    max-width: 30px !important;
+>>>>>>> 599399384a2b375cebc92bd1a4ddb2ea9ebce1b6
     padding: 0;
     justify-content: center;
     align-items: center;
