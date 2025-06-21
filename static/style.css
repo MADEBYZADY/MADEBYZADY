@@ -55,6 +55,26 @@ body {
   }
 }
 
+/* haladit ascunde titlul in taskbar pe telefon */
+
+@media (max-width: 600px) {
+  .taskbar-title {
+    display: none;
+  }
+}
+
+.taskbar-item > div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@media (max-width: 600px) {
+  .taskbar-item > div {
+    justify-content: center; 
+  }
+}
+
 /*img {
     image-rendering: pixelated;
 }*/
