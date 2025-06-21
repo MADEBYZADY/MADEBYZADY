@@ -58,29 +58,21 @@ body {
 /* haladit ascunde titlul in taskbar pe telefon */
 
 @media (max-width: 600px) {
-    .taskbar-title {
-    display: inline-block;
-  }
 
   .taskbar-item {
-    flex: 0 0 30px;
-<<<<<<< HEAD
+    display: inline-block;
+    flex-direction: row;
+    align-items: center;
+    flex: 1 1 auto;
+    font-size: 0;
     width: 30px;
     height: 30px;
-=======
     width: 30px !important;
     min-width: 30px !important;
     max-width: 30px !important;
->>>>>>> 599399384a2b375cebc92bd1a4ddb2ea9ebce1b6
     padding: 0;
     justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .taskbar-item span.title {
-    display: none;
+    overflow: hidden;
   }
 
   .taskbar-item img.icon {
@@ -89,6 +81,55 @@ body {
     height: 20px;
     margin: 0;
   }
+
+}
+
+.taskbar-items {
+  display: inline-block;
+  flex-direction: row;
+  align-items: center;
+  flex: 1 1 auto;
+  gap: 2px;
+  padding: 0 2px;
+  height: 22px;
+  min-width: 0;      
+  overflow: hidden;
+}
+
+.taskbar-item {
+  display: inline-block;
+  align-items: center;
+  height: 22px;
+  font-size: 11px;
+  width: 140px;
+  padding: 0 8px;
+  gap: 4px;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.taskbar-title {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%; 
+}
+
+.taskbar-item img.icon {
+    flex: 0 0 20px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.taskbar-item > * {
+    line-height: 22px;
+}
+
+.taskbar-item.active {
+    font-weight: bold;
 }
 
 .taskbar-item > div {
@@ -223,59 +264,13 @@ button.active {
     margin: 0 2px;
 }
 
-.taskbar-items {
-  display: inline-block;
-  flex-direction: row;
-  align-items: center;
-  flex: 1 1 auto;
-  gap: 2px;
-  padding: 0 2px;
-  height: 22px;
-  min-width: 0;      
-  overflow: hidden;
-}
-
-.taskbar-item {
-  display: inline-block;
-  align-items: center;
-  height: 22px;
-  font-size: 11px;
-  width: 140px;
-  padding: 0 8px;
-  gap: 4px;
-  flex: 0 0 auto;
-  box-sizing: border-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.taskbar-title {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 100%; 
-}
-
-.taskbar-item img.icon {
-    flex: 0 0 20px;
-    height: 16px;
-    object-fit: contain;
-}
-
-.taskbar-item > * {
-    line-height: 22px;
-}
-
-.taskbar-item.active {
-    font-weight: bold;
-}
-
 .clock {
+    flex: 0 0 auto;
+    padding: 0 10px;
     position: fixed;
     bottom: 4px;
     right: 4px;
-    width: 60px;
+    width: 40px;
     height: 22px;
     display: flex;
     justify-content: center;
@@ -285,6 +280,8 @@ button.active {
     font-size: 11px;
     white-space: nowrap;
     z-index: 1000;
+    background-color: #c0c0c0;
+    box-shadow: 0 0 0 2px #c0c0c0;
 }
 
 .window {
