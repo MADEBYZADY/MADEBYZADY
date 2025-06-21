@@ -60,7 +60,7 @@ class Folder {
 ⵐ I’ve collaborated with clients worldwide: from major festivals like Rolling Loud to local venues, musicians, event organizers, YouTubers, and brands. ⵐ
 
 ⵐ My work is fueled by a love for all things artistic and the creative process itself, with fashion and music not just as interests, but as the core inspiration behind my entire vision. ⵐ</pre>`,
-                400, 290, "static/img/explorer/files/txt.png"
+                340, 290, "static/img/explorer/files/txt.png"
             );
         if (this.name == "SUPPORT ZADY")
             return window.open("https://ko-fi.com/zady03", "_blank").focus();
