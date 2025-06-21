@@ -244,7 +244,7 @@ class WindowManager {
 
         const taskbarItem = document.createElement('button');
         taskbarItem.className = 'taskbar-item';
-        taskbarItem.innerHTML = `<span>${title}</span>`;
+        taskbarItem.innerHTML = `${icon ? `<img src="${icon}" class="taskbar-icon" alt="" />` : ''}<span>${title}</span>`;
         taskbarItem.dataset.windowId = windowId;
         this.taskbarItems.appendChild(taskbarItem);
 
