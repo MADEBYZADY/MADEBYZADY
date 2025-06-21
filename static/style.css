@@ -61,6 +61,25 @@ body {
   .taskbar-title {
     display: none;
   }
+
+  .taskbar-item {
+    flex: 0 0 30px;
+    max-width: 30px;
+    min-width: 30px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .taskbar-item span.title {
+    display: none;
+  }
+
+  .taskbar-item img.icon {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+  }
 }
 
 .taskbar-item > div {
@@ -210,9 +229,23 @@ button.active {
     max-width: 100px;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
     text-align: left;
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.taskbar-item img.icon {
+    flex: 0 0 20px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.taskbar-item span.title {
+    flex: 1 1 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .taskbar-item > * {
