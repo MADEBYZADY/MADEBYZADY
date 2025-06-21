@@ -198,6 +198,7 @@ body {
 }
 
 .icon img {
+    image-rendering: pixelated;
     width: 64px;
     height: 64px;
     margin-bottom: 4px;
