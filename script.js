@@ -20,7 +20,7 @@ class Folder {
         const cleanName = useDefault ? name.substring(1) : name;
         const parts = cleanName.split('.');
 
-        // nu are extensie -> e folder
+        // nu are extensie, adica e folder
         if (parts.length == 1)
             return "static/img/desktop/folder.png";
         // altfel fisier
@@ -28,7 +28,7 @@ class Folder {
         return `static/img/explorer/files/${extension}.png`;
     }
 
-    // adauga pe desktop
+    // adaugare pe desktop
     create() {
         if (this.name.startsWith('_')) return;
         this.element = document.createElement('div');
@@ -103,12 +103,11 @@ class Folder {
         const win = document.querySelector(`.window[data-window-id="${windowId}"]`);
         const filescroll = win.querySelector('.explorer-filescroll');
 
-        // Add event listeners to file icons within this specific window
         filescroll.addEventListener('click', (e) => {
             const fileIcon = e.target.closest('.explorer-fileicon');
             if (fileIcon) {
                 e.stopPropagation();
-                // Deselect all file icons in this window
+                // deselecteaza fisierele din fereastra
                 filescroll.querySelectorAll('.explorer-fileicon').forEach(icon => {
                     icon.classList.remove('selected');
                 });
@@ -116,7 +115,6 @@ class Folder {
             }
         });
 
-        // todo: not scroll, icons
         filescroll.addEventListener('dblclick', (e) => {
             const fileIcon = e.target.closest('.explorer-fileicon');
             if (fileIcon) {
@@ -202,7 +200,7 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// Window management
+// manager de ferestre
 class WindowManager {
     constructor() {
         this.windows = [];
@@ -253,13 +251,12 @@ class WindowManager {
 
         this.makeDraggable(window, titleBar);
 
-        // Add window controls
+        // controale fereastra
         const closeBtn = titleBar.querySelector('button[aria-label="Close"]');
         closeBtn.addEventListener('click', () => this.closeWindow(windowId));
         const minimizeBtn = titleBar.querySelector('button[aria-label="Minimize"]');
         minimizeBtn.addEventListener('click', () => this.minimizeWindow(windowId));
 
-        // Add click handler to taskbar item
         taskbarItem.addEventListener('click', () => {
             const win = this.windows.find(w => w.id === windowId);
             if (win && win.element.style.display === 'none') {
@@ -272,7 +269,6 @@ class WindowManager {
             }
         });
 
-        // Add click handler to window for activation
         window.addEventListener('mousedown', () => {
             this.activateWindow(windowId);
         });
@@ -323,7 +319,7 @@ class WindowManager {
             if (e.touches)
                 e = e.touches[0]
             if (isDragging) {
-                oe.preventDefault(); // ca sa nu tragem de text
+                oe.preventDefault(); // previne tragerea de text
                 currentX = e.clientX - initialX;
                 currentY = e.clientY - initialY;
 
@@ -380,11 +376,10 @@ class WindowManager {
     }
 }
 
-// Initialize window manager
 const windowManager = new WindowManager();
 
 // deselecteaza cand click altundeva
-// touch bleh
+// touchscreen
 document.addEventListener('mousedown', (e) => {
     if (!e.target.closest('.icon') && !e.target.closest('.explorer-fileicon')) {
         document.querySelectorAll('.icon').forEach(icon => icon.classList.remove('selected'));
@@ -402,7 +397,7 @@ function repositionWindowIfOutOfViewport(winEl) {
   const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
 
-  // Resize defensiv dacă fereastra e mai mare decât viewportul
+  // resize daca fereastra e mai mare decat viewport
   if (winEl.offsetWidth > viewportWidth) {
     winEl.style.width = `${viewportWidth - padding * 2}px`;
   }

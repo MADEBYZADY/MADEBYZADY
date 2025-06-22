@@ -55,8 +55,7 @@ body {
   }
 }
 
-/* haladit ascunde titlul in taskbar pe telefon */
-
+/* diferente pt mobile */
 @media (max-width: 600px) {
 
   .taskbar-item {
@@ -140,7 +139,7 @@ body {
 
 /*img {
     image-rendering: pixelated;
-}*/
+} (optional) pixel icons*/
 
 #boot-screen {
     background-color: black;
@@ -298,9 +297,9 @@ button.active {
 }
 
 .window {
-  max-width: 95vw;  /* 95% din viewport width */
-  max-height: 90vh; /* 90% din viewport height */
-  overflow: auto;   /* scroll dacă conținutul e mai mare */
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow: auto;
 }
 
 .window-body {
@@ -481,7 +480,7 @@ button.active {
 
 .pixelated {
   image-rendering: pixelated;
-  image-rendering: crisp-edges; /* fallback for some browsers */
+  image-rendering: crisp-edges; /* browser fallback */
 }
 
 ::-webkit-scrollbar-button {
