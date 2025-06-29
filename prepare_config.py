@@ -66,10 +66,10 @@ for folder_name in FOLDERS_ORDERED: #os.listdir("virtual_desktop"):
             if folder_name == "ACCOUNTS":
                 with open(os.path.join(folder_path, filename), "r", encoding="utf-8") as f:
                     content = [x.strip() for x in f.readlines()]
-                filename = filename.strip(".txt") + ".url"
+                filename = filename.removesuffix(".txt") + ".url"
                 link_store[filename.split(' - ', 1)[-1]] = content[0]
                 if len(content) == 1:
-                    content.append(filename.split(' - ', 1)[-1].split(' ZADY')[0])
+                    content.append(filename.split(' - ', 1)[-1].split(' ZADY')[0].removesuffix('.url'))
                 if os.path.exists(os.path.join("virtual_desktop", "_icons", f"{content[1]}.ico")):
                     img = Image.open(os.path.join("virtual_desktop", "_icons", f"{content[1]}.ico"))
                     img = Image.open(img_path)
