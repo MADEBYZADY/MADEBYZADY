@@ -18,9 +18,11 @@ FOLDER_DESCRIPTIONS = {
 import os, re, json
 try:
     from PIL import Image
+    import natsort
 except:
     print('stai ca iti lipseste perna')
     os.system('pip install pillow')
+    os.system('pip install natsort')
     os.system('start "" https://i.ibb.co/HTXTxmDP/Untitled.jpg')
     exit()
 
@@ -106,11 +108,9 @@ for folder_name in FOLDERS_ORDERED: #os.listdir("virtual_desktop"):
             nfiles = []
             for sfilename in os.listdir(os.path.join(folder_path, filename)):
                 if os.path.isfile(os.path.join(os.path.join(folder_path, filename), sfilename)):
-                    print('da cuaie')
                     icon_path = os.path.join("virtual_desktop", "_icons", f"{sfilename}.png")
                     if not os.path.exists(icon_path):
-                        print('incerc')
-                        try:
+                        try:    
                             img_path = os.path.join(os.path.join(folder_path, filename), sfilename)
                             img = Image.open(img_path)
                             img = img.resize((32, 32), Image.Resampling.BICUBIC)
@@ -123,14 +123,13 @@ for folder_name in FOLDERS_ORDERED: #os.listdir("virtual_desktop"):
                             nfiles.append(f"*{sfilename}")
                             print(f"eroare la generarea iconului pentru *{sfilename}, {e}")
                     else:
-                        print('exista')
                         nfiles.append(sfilename)
             sfolder_config = {
                 "name": filename,
                 "parent": folder_name,
                 "onDesktop": False,
                 "description": FOLDER_DESCRIPTIONS.get(filename, ""),
-                "files": sorted(nfiles, key=lambda x: (float(x.split(' - ')[0].strip('*')) - (1 if float(x.split(' - ')[0].strip('*')) % 1 != 0 and filename != 'ACCOUNTS' else 0)) if ' - ' in x else 0, reverse=filename != 'ACCOUNTS')
+                "files": natsort.natsorted(nfiles)
             }
             print(sfolder_config)
             desktop_folders.append(sfolder_config)
