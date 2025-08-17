@@ -388,6 +388,7 @@ button.active {
     margin-top: 2px;
     text-align: center;
     background: transparent;
+    word-break: break-word;
 }
 
 .explorer-statusbar {
