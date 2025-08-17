@@ -2,6 +2,7 @@ FOLDERS_ORDERED = [
     "ABOUT ZADY",
     "PERSONAL WORK",
     "COMMS & COLLABS",
+    "PHOTOGRAPHY",
     "LOGOS",
     "ACCOUNTS",
     "SUPPORT ZADY",
@@ -11,6 +12,7 @@ FOLDER_DESCRIPTIONS = {
     "PERSONAL WORK": "MY OWN PROJECTS.", 
     "LOGOS": "LOGO DESIGNS.",
     "COMMS & COLLABS": "CLIENT WORK, COMMISSIONS & COLLABORATIVE PROJECTS.",
+    "PHOTOGRAPHY": "A COLLECTION OF PHOTOS I TOOK."
 }
 
 import os, re, json
@@ -97,11 +99,46 @@ for folder_name in FOLDERS_ORDERED: #os.listdir("virtual_desktop"):
                         print(f"eroare la generarea iconului pentru *{filename}, {e}")
                 else:
                     files.append(filename)
+        else:
+            #lenea, copypaste, nu-i frumos si nici sanatos
+            #pe viitor se curata
+            files.append(filename)
+            nfiles = []
+            for sfilename in os.listdir(os.path.join(folder_path, filename)):
+                if os.path.isfile(os.path.join(os.path.join(folder_path, filename), sfilename)):
+                    print('da cuaie')
+                    icon_path = os.path.join("virtual_desktop", "_icons", f"{sfilename}.png")
+                    if not os.path.exists(icon_path):
+                        print('incerc')
+                        try:
+                            img_path = os.path.join(os.path.join(folder_path, filename), sfilename)
+                            img = Image.open(img_path)
+                            img = img.resize((32, 32), Image.Resampling.BICUBIC)
+                            img.save(icon_path, format='png')
+                            nfiles.append(sfilename)
+                            print(f"am generat icon pentru {sfilename}")
+                        except Exception as e:
+                            if sfilename.endswith('.html'):
+                                sfilename = sfilename.strip(".html") + ".mp4"
+                            nfiles.append(f"*{sfilename}")
+                            print(f"eroare la generarea iconului pentru *{sfilename}, {e}")
+                    else:
+                        print('exista')
+                        nfiles.append(sfilename)
+            sfolder_config = {
+                "name": filename,
+                "parent": folder_name,
+                "onDesktop": False,
+                "description": FOLDER_DESCRIPTIONS.get(filename, ""),
+                "files": sorted(nfiles, key=lambda x: (float(x.split(' - ')[0].strip('*')) - (1 if float(x.split(' - ')[0].strip('*')) % 1 != 0 and filename != 'ACCOUNTS' else 0)) if ' - ' in x else 0, reverse=filename != 'ACCOUNTS')
+            }
+            print(sfolder_config)
+            desktop_folders.append(sfolder_config)
 
     folder_config = {
         "name": folder_name,
         "description": FOLDER_DESCRIPTIONS.get(folder_name, ""),
-        "files": sorted(files, key=lambda x: float(x.split(' - ')[0].strip('*')) - (1 if float(x.split(' - ')[0].strip('*')) % 1 != 0 and folder_name != 'ACCOUNTS' else 0), reverse=folder_name != 'ACCOUNTS')
+        "files": sorted(files, key=lambda x: (float(x.split(' - ')[0].strip('*')) - (1 if float(x.split(' - ')[0].strip('*')) % 1 != 0 and folder_name != 'ACCOUNTS' else 0)) if ' - ' in x else 0, reverse=folder_name != 'ACCOUNTS')
     }
     print(folder_config)
     
