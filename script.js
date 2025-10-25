@@ -57,75 +57,81 @@ class Folder {
         // "foldere" speciale
 
         if (this.name == "ARTIMÖRA") {
-    let count = 0;
     const totalImages = 10;
+    const artimoraUrls = Array.from({ length: totalImages }, (_, i) => `static/img/artimora-${i + 1}.png`);
+    let count = 0;
 
-    const interval = setInterval(() => {
-        count++;
-
-        const x = Math.random() * (window.innerWidth - 500);
-        const y = Math.random() * (window.innerHeight - 500);
-
-        const imageNumber = count;
-
-        const popupId = windowManager.createWindow(
-            "ARTIMÖRA",
-            `<img src="static/img/artimora-${imageNumber}.png" style="width:100%;height:100%;object-fit:cover;">`,
-            500, 500,
-            "handmade/ARTIMÖRA.png"
-        );
-
-        const popup = document.querySelector(`.window[data-window-id="${popupId}"]`);
-        popup.style.left = `${x}px`;
-        popup.style.top = `${y}px`;
-
-        popup.classList.add('shake');
-        setTimeout(() => popup.classList.remove('shake'), 500);
-
-        setTimeout(() => {
-            windowManager.closeWindow(popupId);
-        }, 3000); // visible for 3s
-
+    function showNextImage() {
         if (count >= totalImages) {
-            clearInterval(interval);
+            // final window
+            const finalWindowId = windowManager.createWindow(
+                "ARTIMÖRA",
+                `
+                    <div class="field-row" style="padding:16px; align-items:center;">
+                        <img src="handmade/ARTIMÖRA.png" alt="ARTIMÖRA" style="width:32px;height:32px;margin-right:16px;">
+                        <div>An endless circuit of creation.</div>
+                    </div>
+                    <div class="field-row" style="justify-content:center;gap:8px; margin-top:24px;">
+                        <button id="join-discord">JÖIN</button>
+                    </div>
+                `,
+                350, 150,
+                "handmade/ARTIMÖRA.png"
+            );
 
-            // JÖIN
-            setTimeout(() => {
-                const finalWindowId = windowManager.createWindow(
-                    "ARTIMÖRA",
-                    `
-                        <div class="field-row" style="padding:16px;">
-                            <img src="handmade/ARTIMÖRA.png" alt="ARTIMÖRA" style="width:32px;height:32px;margin-right:16px;">
-                            <div>An endless circuit of creation.</div>
-                        </div>
-                        <div class="field-row" style="justify-content:center;gap:8px;">
-                            <button id="join-discord">JÖIN</button>
-                        </div>
-                    `,
-                    300, 130,
-                    "handmade/ARTIMÖRA.png"
-                );
+            const finalWin = document.querySelector(`.window[data-window-id="${finalWindowId}"]`);
 
-                const finalWin = document.querySelector(`.window[data-window-id="${finalWindowId}"]`);
+            // immediately center using CSS transform
+            finalWin.style.position = 'fixed';
+            finalWin.style.left = '50%';
+            finalWin.style.top = '50%';
+            finalWin.style.transform = 'translate(-50%, -50%)';
 
-                // center 
-                function centerFinalWindow() {
-                    finalWin.style.left = `${(window.innerWidth - finalWin.offsetWidth) / 2}px`;
-                    finalWin.style.top = `${(window.innerHeight - finalWin.offsetHeight) / 2}px`;
-                }
-                centerFinalWindow(); // center
-                window.addEventListener('resize', centerFinalWindow);
+            // join Discord button
+            finalWin.querySelector('#join-discord').addEventListener('click', () => {
+                window.open("https://discord.gg/artimora", "_blank").focus();
+                windowManager.closeWindow(finalWindowId);
+            });
 
-                // JÖIN
-                finalWin.querySelector('#join-discord').addEventListener('click', () => {
-                    window.open("https://discord.gg/artimora", "_blank").focus();
-                    windowManager.closeWindow(finalWindowId);
-                    window.removeEventListener('resize', centerFinalWindow);
-                });
-            }, 500);
+            return;
         }
-    }, 200);
 
+        const img = new Image();
+        img.src = artimoraUrls[count];
+        img.onload = () => {
+            const x = Math.random() * (window.innerWidth - 500);
+            const y = Math.random() * (window.innerHeight - 500);
+
+            const popupId = windowManager.createWindow(
+                "ARTIMÖRA",
+                `<img src="${artimoraUrls[count]}" style="width:100%;height:100%;object-fit:cover;">`,
+                500, 500,
+                "handmade/ARTIMÖRA.png"
+            );
+
+            const popup = document.querySelector(`.window[data-window-id="${popupId}"]`);
+            popup.style.left = `${x}px`;
+            popup.style.top = `${y}px`;
+
+            popup.classList.add('shake');
+            setTimeout(() => popup.classList.remove('shake'), 500);
+
+            setTimeout(() => {
+                windowManager.closeWindow(popupId);
+            }, 3000);
+
+            count++;
+            setTimeout(showNextImage, 200);
+        };
+
+        img.onerror = () => {
+            console.warn("Failed to load", artimoraUrls[count]);
+            count++;
+            showNextImage(); // skip broken image
+        };
+    }
+
+    showNextImage();
     return;
 }
 
