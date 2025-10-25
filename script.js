@@ -99,13 +99,13 @@ class Folder {
         const img = new Image();
         img.src = artimoraUrls[count];
         img.onload = () => {
-            const x = Math.random() * (window.innerWidth - 500);
-            const y = Math.random() * (window.innerHeight - 500);
+            const x = Math.random() * (window.innerWidth - 180);
+            const y = Math.random() * (window.innerHeight - 180);
 
             const popupId = windowManager.createWindow(
                 "ARTIMÖRA",
                 `<img src="${artimoraUrls[count]}" style="width:100%;height:100%;object-fit:cover;">`,
-                500, 500,
+                180, 180,
                 "handmade/ARTIMÖRA.png"
             );
 
