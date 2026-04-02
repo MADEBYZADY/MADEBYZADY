@@ -138,11 +138,9 @@ class Folder {
         if (this.name == "ABOUT ZADY")
             return windowManager.createWindow(
                 "ABOUT ZADY",
-                `<pre style="white-space:pre-wrap;padding:8px;height:100%">ⵐ Hey, I'm ZADY — a 2006-born Romanian creative freelancer, active in graphic design, photo/video editing, photography, and whatever else sparks my curiosity along the way. ⵐ
+                `<pre style="white-space:pre-wrap;padding:8px;height:100%">ⵐ Hey, I'm ZADY -- a 2006-born Romanian creative, active in graphic design, photography, photo/video editing, music production, writing and whatever else sparks my curiosity along the way and helps me bring a vision to life. ⵐ
                 
-ⵐ I’ve collaborated with clients worldwide: from major festivals like Rolling Loud to local venues, musicians, event organizers, YouTubers, and brands. ⵐ
-
-ⵐ My work is fueled by a love for all things artistic and the creative process itself, with fashion and music not just as interests, but as the core inspiration behind my entire vision. ⵐ</pre>`,
+                ⵐ My work is fueled by a love for art itself and the creative process, with music and fashion being core inspirations. I have a style that lies somewhere between digital aesthetics and alternative subcultures, but I think the projects themselves explain it better than I ever could. ⵐ</pre>`,
                 340, 290, "static/img/explorer/files/txt.png"
             );
         if (this.name == "SUPPORT ZADY")
