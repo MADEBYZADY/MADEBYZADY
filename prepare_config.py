@@ -3,6 +3,7 @@ FOLDERS_ORDERED = [
     "PERSONAL WORK",
     "COMMS & COLLABS",
     "PHOTOGRAPHY",
+    "PSYAMP",
     "LOGOS",
     "ACCOUNTS",
     "ARTIMÖRA",
