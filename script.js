@@ -105,10 +105,10 @@ class Folder {
                 <input type="range" class="psyamp-seek" min="0" max="100" value="0" step="0.1">
             </div>
             <div class="psyamp-controls">
-                <button class="psyamp-btn" id="psyamp-prev" title="Previous">⏮</button>
+                <button class="psyamp-btn" id="psyamp-prev" title="Previous">◀◀</button>
                 <button class="psyamp-btn" id="psyamp-play" title="Play">▶</button>
-                <button class="psyamp-btn" id="psyamp-stop" title="Stop">⏹</button>
-                <button class="psyamp-btn" id="psyamp-next" title="Next">⏭</button>
+                <button class="psyamp-btn" id="psyamp-stop" title="Stop">■</button>
+                <button class="psyamp-btn" id="psyamp-next" title="Next">▶▶</button>
             </div>
             <div class="psyamp-vol-row">
                 <span class="psyamp-vol-icon">VOL</span>
@@ -158,7 +158,7 @@ class Folder {
     function playTrack() {
     audio.play().then(() => {
         isPlaying = true;
-        win.querySelector('#psyamp-play').textContent = '⏸';
+        win.querySelector('#psyamp-play').textContent = '❚❚';
     }).catch(err => {
         console.error('PSYAMP play error:', err);
     });
