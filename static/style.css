@@ -665,12 +665,6 @@ button.active {
     flex: 1;
 }
 
-@media (max-width: 600px) {
-    .psyamp-vol-row {
-        display: none !important;
-    }
-}
-
 .psyamp-playlist {
     flex: 1;
     overflow-y: auto;

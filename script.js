@@ -63,7 +63,6 @@ class Folder {
         return;
     }
 
-    // tracks
     const tracks = [
         {
             title: "EYEF�CK²⁰",
@@ -75,8 +74,6 @@ class Folder {
             youtube: "https://music.youtube.com/watch?v=qjjDncz-ZmA&si=G7o59VDrSDwpUjr1"
         }
     ];
-    const safeTitle = tracks[0].title.replace(/[`$\\]/g, '');
-    const safeArtist = tracks[0].artist.replace(/[`$\\]/g, '');
 
     let currentTrack = 0;
     const audio = new Audio();
@@ -105,15 +102,15 @@ class Folder {
                 <input type="range" class="psyamp-seek" min="0" max="100" value="0" step="0.1">
             </div>
             <div class="psyamp-controls">
-                <button class="psyamp-btn" id="psyamp-prev" title="PREVIOUS">◀◀</button>
-                <button class="psyamp-btn" id="psyamp-play" title="PLAY">▶</button>
-                <button class="psyamp-btn" id="psyamp-stop" title="STOP">■</button>
-                <button class="psyamp-btn" id="psyamp-next" title="NEXT">▶▶</button>
+                <button class="psyamp-btn" id="psyamp-prev" title="PREVIOUS">&#9664;&#9664;</button>
+                <button class="psyamp-btn" id="psyamp-play" title="PLAY">&#9654;</button>
+                <button class="psyamp-btn" id="psyamp-stop" title="STOP">&#9632;</button>
+                <button class="psyamp-btn" id="psyamp-next" title="NEXT">&#9654;&#9654;</button>
             </div>
             <div class="psyamp-vol-row">
                 <span class="psyamp-vol-icon">VOL</span>
                 <input type="range" class="psyamp-vol" min="0" max="100" value="80" step="1">
-            </div>  
+            </div>
             <div class="psyamp-playlist">
                 ${tracks.map((t, i) => `
                     <div class="psyamp-track${i === 0 ? ' active' : ''}" data-index="${i}">
@@ -127,6 +124,10 @@ class Folder {
 
     const windowId = windowManager.createWindow("PSYAMP", playerHTML, 320, 420, "virtual_desktop/_icons/PSYAMP.png");
     const win = document.querySelector(`.window[data-window-id="${windowId}"]`);
+
+    if (window.innerWidth <= 600) {
+        win.querySelector('.psyamp-vol-row').style.display = 'none';
+    }
 
     function formatTime(s) {
         if (!s || isNaN(s)) return '0:00';
@@ -147,27 +148,24 @@ class Folder {
         win.querySelectorAll('.psyamp-track').forEach((el, i) => {
             el.classList.toggle('active', i === index);
         });
-        const linksEl = win.querySelector('.psyamp-links');
-            linksEl.innerHTML = `
+        win.querySelector('.psyamp-links').innerHTML = `
             ${t.spotify ? `<a class="psyamp-link" href="${t.spotify}" target="_blank">SPOTIFY</a>` : ''}
             ${t.apple ? `<a class="psyamp-link" href="${t.apple}" target="_blank">APPLE</a>` : ''}
             ${t.youtube ? `<a class="psyamp-link" href="${t.youtube}" target="_blank">YOUTUBE</a>` : ''}
-`;
+        `;
     }
 
     function playTrack() {
-    audio.play().then(() => {
-        isPlaying = true;
-        win.querySelector('#psyamp-play').textContent = '❚❚';
-    }).catch(err => {
-        console.error('PSYAMP play error:', err);
-    });
-}
+        audio.play().then(() => {
+            isPlaying = true;
+            win.querySelector('#psyamp-play').innerHTML = '&#9646;&#9646;';
+        }).catch(err => console.error('PSYAMP play error:', err));
+    }
 
     function pauseTrack() {
         audio.pause();
         isPlaying = false;
-        win.querySelector('#psyamp-play').textContent = '▶';
+        win.querySelector('#psyamp-play').innerHTML = '&#9654;';
     }
 
     audio.addEventListener('timeupdate', () => {
@@ -194,7 +192,7 @@ class Folder {
         audio.pause();
         audio.currentTime = 0;
         isPlaying = false;
-        win.querySelector('#psyamp-play').textContent = '▶';
+        win.querySelector('#psyamp-play').innerHTML = '&#9654;';
     });
 
     win.querySelector('#psyamp-prev').addEventListener('click', () => {
@@ -222,7 +220,15 @@ class Folder {
         });
     });
 
-    // stop audio when window is closed
+    win.querySelector('.psyamp-cover').style.cursor = 'pointer';
+    win.querySelector('.psyamp-cover').addEventListener('click', () => {
+        const overlay = document.createElement('div');
+        overlay.className = 'psyamp-cover-overlay';
+        overlay.innerHTML = `<img src="${tracks[currentTrack].cover}" alt="Cover">`;
+        document.body.appendChild(overlay);
+        overlay.addEventListener('click', () => overlay.remove());
+    });
+
     const observer = new MutationObserver(() => {
         if (!document.contains(win)) {
             audio.pause();
@@ -232,14 +238,6 @@ class Folder {
     });
     observer.observe(document.body, { childList: true });
 
-    win.querySelector('.psyamp-cover').style.cursor = 'pointer';
-    win.querySelector('.psyamp-cover').addEventListener('click', () => {
-    const overlay = document.createElement('div');
-    overlay.className = 'psyamp-cover-overlay';
-    overlay.innerHTML = `<img src="${tracks[currentTrack].cover}" alt="Cover">`;
-    document.body.appendChild(overlay);
-    overlay.addEventListener('click', () => overlay.remove());
-});
     loadTrack(0);
     return;
 }
