@@ -500,3 +500,241 @@ button.active {
 ::-webkit-scrollbar-button {
   display: none;
 }
+
+/* PSYAMP */
+
+.psyamp-player {
+    display: flex;
+    flex-direction: column;
+    background: #1a1a1a;
+    height: 100%;
+    font-family: "Pixelated MS Sans Serif", monospace;
+    color: #ffffff;
+    user-select: none;
+}
+
+.psyamp-cover-area {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    padding: 8px;
+    background: #111;
+    border-bottom: 1px solid #333;
+}
+
+.psyamp-cover {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    image-rendering: pixelated;
+    border: 1px solid #333;
+    flex-shrink: 0;
+    background: #000;
+}
+
+.psyamp-cover-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgb(0, 0, 0, 0.7);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.psyamp-cover-overlay img {
+    max-width: 80vw;
+    max-height: 80vh;
+    object-fit: contain;
+    box-shadow: 0 0 60px rgba(0, 255, 0, 0.15);
+}
+
+.psyamp-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+    gap: 6px;
+}
+
+.psyamp-marquee-wrap {
+    overflow: hidden;
+    width: 100%;
+}
+
+.psyamp-marquee {
+    white-space: nowrap;
+    font-size: 11px;
+    color: #ffffff;
+    animation: psyamp-scroll 10s linear infinite;
+    display: inline-block;
+}
+
+@keyframes psyamp-scroll {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.psyamp-time {
+    font-size: 11px;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+.psyamp-time span {
+    color: #0006ff;
+}
+
+.psyamp-seek-row {
+    padding: 6px 8px 4px 8px;
+    background: #111;
+    border-bottom: 1px solid #222;
+}
+
+.psyamp-seek {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    background: #333;
+    outline: none;
+    cursor: pointer;
+}
+
+.psyamp-seek::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #0006ff;
+    cursor: pointer;
+}
+
+.psyamp-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 8px;
+    background: #1a1a1a;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.psyamp-btn {
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: #0006ff;
+    font-size: 12px;
+    width: 28px;
+    height: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+    font-family: inherit;
+}
+
+.psyamp-btn:hover {
+    background: #333;
+    border-color: #0006ff;
+}
+
+.psyamp-btn:active {
+    background: #111;
+}
+
+.psyamp-vol-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 8px;
+    background: #1a1a1a;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.psyamp-vol-row .psyamp-vol-icon {
+    font-size: 10px;
+    color: #888;
+    flex-shrink: 0;
+}
+
+.psyamp-vol-row .psyamp-vol {
+    flex: 1;
+}
+
+.psyamp-playlist {
+    flex: 1;
+    overflow-y: auto;
+    background: #000;
+    padding: 4px 0;
+}
+
+.psyamp-track {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    font-size: 11px;
+    color: #ffffff;
+    cursor: default;
+    border-bottom: 1px solid #111;
+}
+
+.psyamp-track:hover {
+    background: #111;
+    color: #0006ff;
+}
+
+.psyamp-track.active {
+    color: #ffffff;
+    background: #00039c;
+}
+
+.psyamp-track-num {
+    color: #444;
+    min-width: 20px;
+    flex-shrink: 0;
+}
+
+.psyamp-track.active .psyamp-track-num {
+    color: #ffffff;
+}
+
+.psyamp-track-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.psyamp-playlist::-webkit-scrollbar {
+    width: 6px;
+    background: #111;
+}
+
+.psyamp-playlist::-webkit-scrollbar-thumb {
+    background: #333;
+}
+
+.psyamp-links {
+    display: flex;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.psyamp-link {
+    font-size: 9px;
+    color: #888;
+    text-decoration: none;
+    border: 1px solid #333;
+    padding: 1px 4px;
+    font-family: "Pixelated MS Sans Serif", monospace;
+}
+
+.psyamp-link:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+}
