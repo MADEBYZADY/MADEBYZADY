@@ -79,14 +79,15 @@ for folder_name in FOLDERS_ORDERED: #os.listdir("virtual_desktop"):
                     img = Image.open(os.path.join("virtual_desktop", "_icons", f"{content[1]}.ico"))
                     img = Image.open(img_path)
                     img = img.resize((32, 32), Image.Resampling.BICUBIC)
-                    img.save(os.path.join("virtual_desktop", "_icons", f"{filename}.png"), format='png')
+                    img.save(os.path.join("virtual_desktop", "_icons", f"{safe_icon_name}.png"), format='png')
                 else:
                     with open(os.path.join("virtual_desktop", "_icons", f"{content[1]}.png"), 'rb') as fsrc:
                         with open(os.path.join("virtual_desktop", "_icons", f"{filename}.png"), 'wb') as fdst:
                             fdst.write(fsrc.read())
                 files.append(filename)
             else:
-                icon_path = os.path.join("virtual_desktop", "_icons", f"{filename}.png")
+                safe_icon_name = re.sub(r"['\"]", "_", filename)
+                icon_path = os.path.join("virtual_desktop", "_icons", f"{safe_icon_name}.png")
                 if not os.path.exists(icon_path):
                     try:
                         img_path = os.path.join(folder_path, filename)
