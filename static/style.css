@@ -667,7 +667,7 @@ button.active {
 
 @media (max-width: 600px) {
     .psyamp-vol-row {
-        display: none;
+        display: none !important;
     }
 }
 
